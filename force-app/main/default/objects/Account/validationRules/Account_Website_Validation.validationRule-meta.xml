@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Website_Validation</fullName>
+    <active>true</active>
+    <description>Ensures the Website field is not empty and follows the format https://www.xyz.com where xyz is alphanumeric (3-20 chars) and the domain extension is alphabetic (2-3 chars).</description>
+    <errorConditionFormula>OR(
+  ISBLANK(Website),
+  NOT(REGEX(Website, "https://www\\.[a-zA-Z0-9]{3,20}\\.[a-zA-Z]{2,3}"))
+)</errorConditionFormula>
+    <errorMessage>Website field cannot be empty or the contents are not valid</errorMessage>
+</ValidationRule>
